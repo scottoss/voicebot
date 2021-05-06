@@ -14,8 +14,12 @@ bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
 
 
 @bot.command(pass_context=True)
-async def join(ctx):
-         voice = await ctx.author.voice.channel.connect()
+async def heartbeat(ctx):
+         await ctx.send('i am still alive')
+         
+@bot.command(pass_context=True)
+async def ping(ctx):
+         await ctx.send('i am still alive')
 
 @bot.command(pass_context=True)
 async def tts(ctx, *, text: str):
@@ -51,12 +55,17 @@ async def tts(ctx, *, text: str):
 
 
 
-
+@bot.listen()
+async def on_message(message):
+    if "tts help" in message.content.lower():
+        # in this case don't respond with the word "Tutorial" or you will call the on_message event recursively
+        await message.channel.send('its easy just use: >tts <your text here>')
+        await bot.process_commands(message)
  
 
 # Events
 @bot.event
 async def on_ready():
-    print('My Ready is Body')
+    print('My Body is Ready')
 
 bot.run('NzAxODUzODE2MTQzNzQxMDI5.Xp3iTQ.zPu0vaCDaAXicbv-GjQTqrgn5BE')
