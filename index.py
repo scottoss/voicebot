@@ -3,6 +3,7 @@ from discord.ext import commands
 import datetime
 import time
 import asyncio
+import os
 
 import httplib2
 from urllib.parse import urlencode, quote # For URL creation
