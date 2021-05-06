@@ -68,4 +68,4 @@ async def on_message(message):
 async def on_ready():
     print('My Body is Ready')
 
-bot.run('NzAxODUzODE2MTQzNzQxMDI5.Xp3iTQ.zPu0vaCDaAXicbv-GjQTqrgn5BE')
+bot.run(proces.env.TOKEN)
