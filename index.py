@@ -21,6 +21,18 @@ async def heartbeat(ctx):
 @bot.command(pass_context=True)
 async def ping(ctx):
          await ctx.send('i am still alive')
+         
+         
+@bot.command(pass_context=True)
+async def rick(ctx):
+         voice = await ctx.author.voice.channel.connect()
+
+         voice.play(discord.FFmpegPCMAudio('rick.mp3'))
+         while voice.is_playing():
+             await asyncio.sleep(.1)
+         await voice.disconnect()
+         
+         
 
 @bot.command(pass_context=True)
 async def tts(ctx, *, text: str):
