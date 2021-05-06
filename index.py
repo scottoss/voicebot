@@ -29,7 +29,7 @@ async def tts(ctx, *, text: str):
          query_hash = {"INPUT_TEXT":input_text,
                        "INPUT_TYPE":"TEXT", # Input text
                        "LOCALE":"en_US",
-                       "VOICE":"dfki-spike-hsmm", # Voice informations  (need to be compatible)
+                       "VOICE":"dfki-poppy-hsmm", # Voice informations  (need to be compatible)
                        "OUTPUT_TYPE":"AUDIO",
                        "AUDIO":"WAVE", # Audio informations (need both)
                        }
