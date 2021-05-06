@@ -37,13 +37,13 @@ async def tts(ctx, *, text: str):
          if (resp["content-type"] == "audio/x-wav"):
 
              # Write the wav file
-             f = open("C:/Users/scott/Downloads/bot/output_wav.wav", "wb")
+             f = open("output_wav.wav", "wb")
              f.write(content)
              f.close()
         
          voice = await ctx.author.voice.channel.connect()
 
-         voice.play(discord.FFmpegPCMAudio('C:/Users/scott/Downloads/bot/output_wav.wav'))
+         voice.play(discord.FFmpegPCMAudio('output_wav.wav'))
          while voice.is_playing():
              await asyncio.sleep(.1)
          await voice.disconnect()
