@@ -17,12 +17,17 @@ voice = await ctx.author.voice.channel.connect()
 
 @bot.command(pass_context=True)
 async def radio(ctx):
+         voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
 
 @bot.command(pass_context=True)
 async def stop(ctx):
-         await voice.disconnect()
+    for x in client.voice_clients:
+        if(x.server == ctx.message.server):
+            return await x.disconnect()
+
+    return await client.say("I am not connected to any voice channel on this server!")
 
 
 @bot.command(pass_context=True)
@@ -69,8 +74,9 @@ async def tts(ctx, *, text: str):
              f.write(content)
              f.close()
         
-         
+         voice = await ctx.author.voice.channel.connect()
 
+ 
          voice.play(discord.FFmpegPCMAudio('output_wav.wav'))
          while voice.is_playing():
              await asyncio.sleep(.1)
