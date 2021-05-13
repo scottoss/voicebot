@@ -14,6 +14,16 @@ mary_port = "6754"
 bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
 
 
+
+@bot.command(pass_context=True)
+async def heartbeat(ctx):
+         voice = await ctx.author.voice.channel.connect()
+
+         voice.play(discord.FFmpegPCMAudio('https://casting.sparklebot.nl/radio/8000/radio.mp3')
+
+
+
+
 @bot.command(pass_context=True)
 async def heartbeat(ctx):
          await ctx.send('i am still alive')
