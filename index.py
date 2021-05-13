@@ -19,14 +19,10 @@ async def radio(ctx):
          voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
+         await ctx.send('playing the radio now, to stop it u need to dissconnect the bot from the vc yourself')
 
-@bot.command(pass_context=True)
-async def stop(ctx):
-    for x in bot.voice_clients:
-        if(x.server == ctx.message.server):
-            return await x.disconnect()
 
-    return await client.say("I am not connected to any voice channel on this server!")
+
 
 
 @bot.command(pass_context=True)
