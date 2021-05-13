@@ -18,7 +18,7 @@ voice = await ctx.author.voice.channel.connect()
 @bot.command(pass_context=True)
 async def radio(ctx):
 
-         voice.play(discord.FFmpegPCMAudio('https://casting.sparklebot.nl/radio/8000/radio.mp3'))
+         voice.play(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
 
 @bot.command(pass_context=True)
 async def stop(ctx):
