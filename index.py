@@ -22,7 +22,7 @@ async def radio(ctx):
 
 @bot.command(pass_context=True)
 async def stop(ctx):
-    for x in client.voice_clients:
+    for x in bot.voice_clients:
         if(x.server == ctx.message.server):
             return await x.disconnect()
 
