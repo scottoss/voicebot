@@ -12,16 +12,17 @@ import re
 mary_host = "84.27.169.137"
 mary_port = "6754"
 bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
-
+voice = await ctx.author.voice.channel.connect()
 
 
 @bot.command(pass_context=True)
 async def radio(ctx):
-         voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio('https://casting.sparklebot.nl/radio/8000/radio.mp3'))
 
-
+@bot.command(pass_context=True)
+async def stop(ctx):
+         await voice.disconnect()
 
 
 @bot.command(pass_context=True)
@@ -68,7 +69,7 @@ async def tts(ctx, *, text: str):
              f.write(content)
              f.close()
         
-         voice = await ctx.author.voice.channel.connect()
+         
 
          voice.play(discord.FFmpegPCMAudio('output_wav.wav'))
          while voice.is_playing():
