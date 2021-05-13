@@ -11,7 +11,7 @@ from urllib import parse, request
 import re
 mary_host = "84.27.169.137"
 mary_port = "6754"
-bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
+bot = commands.Bot(command_prefix=os.environ['PREFIX'], description="This is a Helper Bot")
 
 
 @bot.command(pass_context=True)
