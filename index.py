@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix=os.environ['PREFIX'], description="This is a H
 
 
 @bot.command(pass_context=True)
-async def help(ctx):
+async def helpme(ctx):
          prefix = os.environ['PREFIX']
          await ctx.send('1. {}radio - play the radio station').format(prefix)
          await ctx.send('2. {}darkpony - get an darkpony sfx').format(prefix)
