@@ -14,7 +14,7 @@ mary_port = "6754"
 bot = commands.Bot(command_prefix=os.environ['PREFIX'], description="This is a Helper Bot")
 
 
-@commands.command()
+@bot.command()
 async def volume(self, ctx, volume: int):
          """Changes the player's volume"""
 
@@ -25,7 +25,7 @@ async def volume(self, ctx, volume: int):
          await ctx.send(f"Changed volume to {volume}%")
 
                   
-@commands.command()
+@bot.command()
 async def radio(self, ctx,):
          """Plays a file from the local filesystem"""
 
