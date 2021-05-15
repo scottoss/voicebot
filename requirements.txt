@@ -1,3 +1,4 @@
 discord
 httplib2
 PyNaCl
+youtube_dl
