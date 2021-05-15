@@ -26,7 +26,7 @@ async def volume(self, ctx, volume: int):
 
                   
 @bot.command()
-async def radio(self, ctx,):
+async def radio(ctx):
          """Plays a file from the local filesystem"""
 
          source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
