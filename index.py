@@ -21,7 +21,14 @@ async def radio(ctx):
          voice.play(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
          await ctx.send('playing the radio now, to stop it u need to dissconnect the bot from the vc yourself')
 
+@bot.command(pass_context=True)
+async def darkpony(ctx):
+         voice = await ctx.author.voice.channel.connect()
 
+         voice.play(discord.FFmpegPCMAudio('dark.wav'))
+         while voice.is_playing():
+             await asyncio.sleep(.1)
+         await voice.disconnect()
 
 
 
