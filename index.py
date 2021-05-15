@@ -130,10 +130,10 @@ async def tts(ctx, *, text: str):
          voice = await ctx.author.voice.channel.connect()
 
  
-        voice.play(discord.FFmpegPCMAudio('output_wav.wav'))
-        while voice.is_playing():
-            await asyncio.sleep(.1)
-        await voice.disconnect()
+         voice.play(discord.FFmpegPCMAudio('output_wav.wav'))
+         while voice.is_playing():
+             await asyncio.sleep(.1)
+         await voice.disconnect()
 
 
         
