@@ -97,9 +97,42 @@ class Music(commands.Cog):
     @commands.command()
     async def stop(self, ctx):
         """Stops and disconnects the bot from voice"""
+       
 
         await ctx.voice_client.disconnect()
 
+        
+@bot.command(pass_context=True)
+async def tts(ctx, *, text: str):
+         """text to speech api"""
+         input_text = "{}".format(text)
+        
+         query_hash = {"INPUT_TEXT":input_text,
+                       "INPUT_TYPE":"TEXT", # Input text
+                       "LOCALE":"en_US",
+                       "VOICE":os.environ['MAIN_VOICE'], # Voice informations  (need to be compatible)
+                       "OUTPUT_TYPE":"AUDIO",
+                       "AUDIO":"WAVE", # Audio informations (need both)
+                       }
+         query = urlencode(query_hash)
+         print("query = \"http://%s:%s/process?%s\"" % (mary_host, mary_port, query))
+
+         h_mary = httplib2.Http()
+         resp, content = h_mary.request("http://%s:%s/process?" % (mary_host, mary_port), "POST", query)
+
+         if (resp["content-type"] == "audio/x-wav"):
+
+             # Write the wav file
+             f = open("output_wav.wav", "wb")
+             f.write(content)
+             f.close()
+            
+          source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('output_wav.wav'))
+          ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+
+        
+        
+        
     @play.before_invoke
     @yt.before_invoke
     @stream.before_invoke
