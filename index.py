@@ -14,6 +14,21 @@ mary_port = "6754"
 bot = commands.Bot(command_prefix=os.environ['PREFIX'], description="This is a Helper Bot")
 
 
+
+@bot.command(pass_context=True)
+async def help(ctx):
+         prefix = os.environ['PREFIX']
+         await ctx.send('1. {}radio').format(prefix)
+         await ctx.send('2. {}darkpony').format(prefix)
+         await ctx.send('3. {}rick').format(prefix)
+         await ctx.send('4. {}tts <text>').format(prefix)
+         await ctx.send('5. {}sfx1').format(prefix)
+         await ctx.send('6. {}sfx2').format(prefix)
+         await ctx.send('7. {}sfx3').format(prefix)
+         await ctx.send('8. {}sfx4').format(prefix)
+         await ctx.send('9. {}ping').format(prefix)
+         
+
 @bot.command(pass_context=True)
 async def radio(ctx):
          voice = await ctx.author.voice.channel.connect()
@@ -29,12 +44,49 @@ async def darkpony(ctx):
          while voice.is_playing():
              await asyncio.sleep(.1)
          await voice.disconnect()
-
-
-
+         
 @bot.command(pass_context=True)
-async def heartbeat(ctx):
-         await ctx.send('i am still alive')
+async def sfx1(ctx):
+         voice = await ctx.author.voice.channel.connect()
+
+         voice.play(discord.FFmpegPCMAudio(os.environ['SFX1']))
+         while voice.is_playing():
+             await asyncio.sleep(.1)
+         await voice.disconnect()
+         
+         
+@bot.command(pass_context=True)
+async def sfx2(ctx):
+         voice = await ctx.author.voice.channel.connect()
+
+         voice.play(discord.FFmpegPCMAudio(os.environ['SFX2']))
+         while voice.is_playing():
+             await asyncio.sleep(.1)
+         await voice.disconnect()
+         
+         
+        
+@bot.command(pass_context=True)
+async def sfx3(ctx):
+         voice = await ctx.author.voice.channel.connect()
+
+         voice.play(discord.FFmpegPCMAudio(os.environ['SFX3']))
+         while voice.is_playing():
+             await asyncio.sleep(.1)
+         await voice.disconnect()
+         
+         
+@bot.command(pass_context=True)
+async def sfx4(ctx):
+         voice = await ctx.author.voice.channel.connect()
+
+         voice.play(discord.FFmpegPCMAudio(os.environ['SFX4']))
+         while voice.is_playing():
+             await asyncio.sleep(.1)
+         await voice.disconnect()
+
+         
+         
          
 @bot.command(pass_context=True)
 async def ping(ctx):
@@ -87,12 +139,7 @@ async def tts(ctx, *, text: str):
 
 
 
-@bot.listen()
-async def on_message(message):
-    if "tts help" in message.content.lower():
-        # in this case don't respond with the word "Tutorial" or you will call the on_message event recursively
-        await message.channel.send('its easy just use: >tts <your text here>')
-        await bot.process_commands(message)
+
  
 
 # Events
