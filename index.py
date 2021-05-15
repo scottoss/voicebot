@@ -133,9 +133,7 @@ async def tts(ctx, *, text: str):
         
         
         
-    @play.before_invoke
-    @yt.before_invoke
-    @stream.before_invoke
+    @radio.before_invoke
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
             if ctx.author.voice:
