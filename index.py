@@ -19,6 +19,7 @@ bot = commands.Bot(command_prefix=os.environ['PREFIX'], description="This is a H
 
 @bot.command(pass_context=True)
 async def radio(ctx):
+         """play the radio"""
          voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
@@ -26,6 +27,7 @@ async def radio(ctx):
 
 @bot.command(pass_context=True)
 async def darkpony(ctx):
+         """fuck with dark"""
          voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio('dark.wav'))
@@ -35,6 +37,7 @@ async def darkpony(ctx):
          
 @bot.command(pass_context=True)
 async def sfx1(ctx):
+         """play sfx1"""
          voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio(os.environ['SFX1']))
@@ -45,6 +48,7 @@ async def sfx1(ctx):
          
 @bot.command(pass_context=True)
 async def sfx2(ctx):
+         """play sfx2"""
          voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio(os.environ['SFX2']))
@@ -56,6 +60,7 @@ async def sfx2(ctx):
         
 @bot.command(pass_context=True)
 async def sfx3(ctx):
+         """play sfx3"""
          voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio(os.environ['SFX3']))
@@ -66,6 +71,7 @@ async def sfx3(ctx):
          
 @bot.command(pass_context=True)
 async def sfx4(ctx):
+         """play sfx4"""
          voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio(os.environ['SFX4']))
@@ -78,11 +84,13 @@ async def sfx4(ctx):
          
 @bot.command(pass_context=True)
 async def ping(ctx):
+         """check if i am still alive"""
          await ctx.send('i am still alive')
          
          
 @bot.command(pass_context=True)
 async def rick(ctx):
+         """get rickrolled"""
          voice = await ctx.author.voice.channel.connect()
 
          voice.play(discord.FFmpegPCMAudio('rick.mp3'))
@@ -94,6 +102,7 @@ async def rick(ctx):
 
 @bot.command(pass_context=True)
 async def tts(ctx, *, text: str):
+         """text to speech api"""
          input_text = "{}".format(text)
         
          query_hash = {"INPUT_TEXT":input_text,
