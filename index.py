@@ -15,19 +15,7 @@ bot = commands.Bot(command_prefix=os.environ['PREFIX'], description="This is a H
 
 
 
-@bot.command(pass_context=True)
-async def helpme(ctx):
-         prefix = os.environ['PREFIX']
-         await ctx.send('1. {}radio - play the radio station').format(prefix)
-         await ctx.send('2. {}darkpony - get an darkpony sfx').format(prefix)
-         await ctx.send('3. {}rick- get rickrolled').format(prefix)
-         await ctx.send('4. {}tts <text> - use text to speech').format(prefix)
-         await ctx.send('5. {}sfx1').format(prefix)
-         await ctx.send('6. {}sfx2').format(prefix)
-         await ctx.send('7. {}sfx3').format(prefix)
-         await ctx.send('8. {}sfx4').format(prefix)
-         await ctx.send('9. {}ping - check if the bot is still alive').format(prefix)
-         
+
 
 @bot.command(pass_context=True)
 async def radio(ctx):
