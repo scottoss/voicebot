@@ -14,7 +14,15 @@ mary_port = "6754"
 bot = commands.Bot(command_prefix=os.environ['PREFIX'], description="This is a Helper Bot")
 
 
+@commands.command()
+async def volume(self, ctx, volume: int):
+         """Changes the player's volume"""
 
+         if ctx.voice_client is None:
+             return await ctx.send("Not connected to a voice channel.")
+
+         ctx.voice_client.source.volume = volume / 100
+         await ctx.send(f"Changed volume to {volume}%")
 
 
 @bot.command(pass_context=True)
@@ -22,7 +30,7 @@ async def radio(ctx):
          """play the radio"""
          voice = await ctx.author.voice.channel.connect()
 
-         voice.play(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
+         voice.play(discord.PCMVolumeTransformer{discord.FFmpegPCMAudio(os.environ['RADIO_LINK'])))
          await ctx.send('playing the radio now, to stop it u need to dissconnect the bot from the vc yourself')
 
 @bot.command(pass_context=True)
