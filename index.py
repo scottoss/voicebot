@@ -24,14 +24,20 @@ async def volume(self, ctx, volume: int):
          ctx.voice_client.source.volume = volume / 100
          await ctx.send(f"Changed volume to {volume}%")
 
+                  
+@commands.command()
+async def radio(self, ctx,):
+         """Plays a file from the local filesystem"""
 
-@bot.command(pass_context=True)
-async def radio(ctx):
-         """play the radio"""
-         voice = await ctx.author.voice.channel.connect()
+         source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
+         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
 
-         voice.play(discord.PCMVolumeTransformer{discord.FFmpegPCMAudio(os.environ['RADIO_LINK'])))
-         await ctx.send('playing the radio now, to stop it u need to dissconnect the bot from the vc yourself')
+         await ctx.send(f'Now playing: Derpystown-radio')
+         await ctx.send('to stop it u need to dissconnect the bot from the vc yourself')
+
+
+         
+
 
 @bot.command(pass_context=True)
 async def darkpony(ctx):
