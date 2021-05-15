@@ -102,8 +102,8 @@ class Music(commands.Cog):
         await ctx.voice_client.disconnect()
 
         
-@bot.command(pass_context=True)
-async def tts(ctx, *, text: str):
+    @commands.command(pass_context=True)
+    async def tts(ctx, *, text: str):
          """text to speech api"""
          input_text = "{}".format(text)
         
