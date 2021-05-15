@@ -11,8 +11,8 @@ from urllib import parse, request
 import re
 mary_host = "84.27.169.137"
 mary_port = "6754"
-bot = commands.Bot(command_prefix=os.environ['PREFIX'], description="This is a Helper Bot")
-
+bot = commands.Bot(command_prefix=commands.when_mentioned_or(os.environ['PREFIX']),
+                   description='test')
 
 @bot.command()
 async def volume(self, ctx, volume: int):
@@ -23,10 +23,20 @@ async def volume(self, ctx, volume: int):
 
          ctx.voice_client.source.volume = volume / 100
          await ctx.send(f"Changed volume to {volume}%")
+         
+         
+@bot.command()
+async def join(self, ctx, *, channel: discord.VoiceChannel):
+         """Joins a voice channel"""
+
+         if ctx.voice_client is not None:
+             return await ctx.voice_client.move_to(channel)
+
+         await channel.connect()
 
                   
 @bot.command()
-async def radio(ctx):
+async def radio(self, ctx):
          """Plays a file from the local filesystem"""
 
          source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
@@ -148,7 +158,16 @@ async def tts(ctx, *, text: str):
          await voice.disconnect()
 
 
-
+@play.before_invoke
+async def ensure_voice(self, ctx):
+        if ctx.voice_client is None:
+            if ctx.author.voice:
+                await ctx.author.voice.channel.connect()
+            else:
+                await ctx.send("You are not connected to a voice channel.")
+                raise commands.CommandError("Author not connected to a voice channel.")
+        elif ctx.voice_client.is_playing():
+            ctx.voice_client.stop()
 
 
  
@@ -156,6 +175,9 @@ async def tts(ctx, *, text: str):
 # Events
 @bot.event
 async def on_ready():
-    print('My Body is Ready')
+    print('Logged in as')
+    print(bot.user.name)
+    print(bot.user.id)
+    print('------')
 
 bot.run(os.environ['TOKEN'])
