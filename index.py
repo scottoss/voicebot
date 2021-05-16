@@ -81,8 +81,48 @@ class Music(commands.Cog):
         await ctx.send(f'Now playing: derpystown radio')
 
 
+    @commands.command()
+    async def darkpony(self, ctx):
+        """fuck with darkpony"""
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('dark.wav'))
+        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
 
+        await ctx.send(f'Now playing: fuck you dark')
  
+
+
+
+    @commands.command()
+    async def sfx1(self, ctx):
+        """play sfx1"""
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['SFX1']))
+        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+
+        
+        
+        
+    @commands.command()
+    async def sfx2(self, ctx):
+        """play sfx2"""
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['SFX1']))
+        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+        
+        
+    @commands.command()
+    async def sfx3(self, ctx):
+        """play sfx3"""
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['SFX3']))
+        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+        
+        
+    @commands.command()
+    async def sfx4(self, ctx):
+        """play sfx4"""
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['SFX4']))
+        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+
+
+
 
     @commands.command()
     async def volume(self, ctx, volume: int):
@@ -134,6 +174,11 @@ class Music(commands.Cog):
         
     @radio.before_invoke
     @tts.before_invoke
+    @darkpony.before_invoke
+    @sfx1.before_invoke
+    @sfx2.before_invoke
+    @sfx3.before_invoke
+    @sfx4.before_invoke
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
             if ctx.author.voice:
