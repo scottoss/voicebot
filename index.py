@@ -103,7 +103,7 @@ class Music(commands.Cog):
 
         
     @commands.command(pass_context=True)
-    async def tts(ctx, text: str):
+    async def tts(self, ctx, *, text: str):
          """text to speech api"""
          input_text = "{}".format(text)
         
