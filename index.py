@@ -104,7 +104,7 @@ class Music(commands.Cog):
     @commands.command()
     async def sfx2(self, ctx):
         """play sfx2"""
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['SFX1']))
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['SFX2']))
         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
         
         
