@@ -127,13 +127,8 @@ class Music(commands.Cog):
              f.write(content)
              f.close()
             
-         voice = await ctx.author.voice.channel.connect()
-
- 
-         voice.play(discord.FFmpegPCMAudio('output_wav.wav'))
-         while voice.is_playing():
-             await asyncio.sleep(.1)
-         await voice.disconnect()
+         source = discord.FFmpegPCMAudio('output_wav.wav')
+         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
         
         
         
