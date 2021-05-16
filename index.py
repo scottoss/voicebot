@@ -6,8 +6,8 @@ import httplib2
 from urllib.parse import urlencode, quote # For URL creation
 from urllib import parse, request
 import re
-mary_host = "84.27.169.137"
-mary_port = "6754"
+mary_host = os.environ['MARY_HOST']
+mary_port = os.environ['MARY_PORT']
 
 from discord.ext import commands
 
@@ -70,6 +70,27 @@ class Music(commands.Cog):
             return await ctx.voice_client.move_to(channel)
 
         await channel.connect()
+        
+    @commands.command()
+    async def yt(self, ctx, *, url):
+        """Plays from a url (almost anything youtube_dl supports)"""
+
+        async with ctx.typing():
+            player = await YTDLSource.from_url(url, loop=self.bot.loop)
+            ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
+
+        await ctx.send(f'Now playing: {player.title}')
+        
+        
+    @commands.command()
+    async def stream(self, ctx, *, url):
+        """Streams from a url (same as yt, but doesn't predownload)"""
+
+        async with ctx.typing():
+            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+            ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
+
+        await ctx.send(f'Now playing: {player.title}')
 
     @commands.command()
     async def radio(self, ctx):
@@ -179,6 +200,8 @@ class Music(commands.Cog):
     @sfx2.before_invoke
     @sfx3.before_invoke
     @sfx4.before_invoke
+    @yt.before_invoke
+    @stream.before_invoke
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
             if ctx.author.voice:
