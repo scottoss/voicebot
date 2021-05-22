@@ -6,8 +6,8 @@ import httplib2
 from urllib.parse import urlencode, quote # For URL creation
 from urllib import parse, request
 import re
-mary_host = os.environ['MARY_HOST']
-mary_port = os.environ['MARY_PORT']
+mary_host = "84.27.169.137"
+mary_port = "6754"
 
 from discord.ext import commands
 
@@ -164,7 +164,7 @@ class Music(commands.Cog):
          query_hash = {"INPUT_TEXT":input_text,
                        "INPUT_TYPE":"TEXT", # Input text
                        "LOCALE":"en_US",
-                       "VOICE":os.environ['MAIN_VOICE'], # Voice informations  (need to be compatible)
+                       "VOICE":"cmu-bdl-hsmm", # Voice informations  (need to be compatible)
                        "OUTPUT_TYPE":"AUDIO",
                        "AUDIO":"WAVE", # Audio informations (need both)
                        }
