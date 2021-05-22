@@ -205,8 +205,8 @@ class Music(commands.Cog):
         elif ctx.voice_client.is_playing():
             ctx.voice_client.stop()
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or(os.environ['PREFIX']),
-                   description='this bot is made by DerpysTown#1416')
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("PREFIX"),
+                   description='DISCRIPTION')
 
 @bot.event
 async def on_ready():
