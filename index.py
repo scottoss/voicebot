@@ -100,8 +100,10 @@ class Music(commands.Cog):
     @commands.command()
     async def sfx1(self, ctx):
         """play sfx1"""
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['SFX1']))
-        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+        url = os.environ['SFX1']
+        async with ctx.typing():
+            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+            ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
 
         
         
@@ -111,7 +113,7 @@ class Music(commands.Cog):
         """play sfx2"""
         url = os.environ['SFX2']
         async with ctx.typing():
-            player = await YTDLSource.from_url(url, loop=self.bot.loop)
+            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
             ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
         
         
@@ -120,15 +122,19 @@ class Music(commands.Cog):
     @commands.command()
     async def sfx3(self, ctx):
         """play sfx3"""
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['SFX3']))
-        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+        url = os.environ['SFX3']
+        async with ctx.typing():
+            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+            ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
         
         
     @commands.command()
     async def sfx4(self, ctx):
         """play sfx4"""
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['SFX4']))
-        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+        url = os.environ['SFX4']
+        async with ctx.typing():
+            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+            ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
 
 
 
