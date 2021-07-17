@@ -80,10 +80,10 @@ class Music(commands.Cog):
     async def radio(self, ctx):
         """Plays the radio station"""
 
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('https://casting.sparklebot.nl/radio/8000/radio.mp3'))
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
 
-        await ctx.send(f'Now playing: derpystown radio')
+        await ctx.send(f'Now playing: os.environ['RADIO_NAME'],)
 
 
     @commands.command()
