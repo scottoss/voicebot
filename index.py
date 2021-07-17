@@ -205,15 +205,13 @@ class Music(commands.Cog):
         elif ctx.voice_client.is_playing():
             ctx.voice_client.stop()
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or(os.environ['PREFIX']),
+bot1 = commands.Bot(command_prefix=commands.when_mentioned_or(os.environ['PREFIX']),
                    description='this bot is made by DerpysTown#1416')
 
-@bot.event
-async def on_ready():
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('------')
+bot2 = commands.Bot(command_prefix='!', description = 'Example')
 
-bot.add_cog(Music(bot))
-bot.run(os.environ['TOKEN'])
+
+loop = asyncio.get_event_loop()
+loop.create_task(bot1.start(process.env.TOKEN))
+loop.create_task(bot2.start(process.env.TOKEN2))
+loop.run_forever()
