@@ -83,7 +83,7 @@ class Music(commands.Cog):
         source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
 
-        await ctx.send(f'Now playing: os.environ['RADIO_NAME'],)
+        await ctx.send(os.environ['RADIO_NAME'])
 
 
     @commands.command()
