@@ -205,10 +205,9 @@ class Music(commands.Cog):
         elif ctx.voice_client.is_playing():
             ctx.voice_client.stop()
 
-bot1 = commands.Bot(command_prefix=commands.when_mentioned_or(os.environ['PREFIX']),
-                   description='this bot is made by DerpysTown#1416')
+bot1 = commands.Bot(command_prefix='rd ', description='this bot is made by DerpysTown#1416')
 
-bot2 = commands.Bot(command_prefix='!', description = 'Example')
+bot2 = commands.Bot(command_prefix='!', description = 'this bot is made by DerpysTown#1416')
 bot1.add_cog(Music(bot1))
 bot2.add_cog(Music(bot2))
 
@@ -217,3 +216,6 @@ loop = asyncio.get_event_loop()
 loop.create_task(bot1.start(os.environ['TOKEN']))
 loop.create_task(bot2.start(os.environ['TOKEN2']))
 loop.run_forever()
+
+await bot1.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="rd help"))
+await bot2.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="!help"))
