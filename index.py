@@ -212,6 +212,6 @@ bot2 = commands.Bot(command_prefix='!', description = 'Example')
 
 
 loop = asyncio.get_event_loop()
-loop.create_task(bot1.start(process.env.TOKEN))
-loop.create_task(bot2.start(process.env.TOKEN2))
+loop.create_task(bot1.start(os.environ['TOKEN1']))
+loop.create_task(bot2.start(os.environ['TOKEN2']))
 loop.run_forever()
