@@ -209,8 +209,8 @@ bot1 = commands.Bot(command_prefix=commands.when_mentioned_or(os.environ['PREFIX
                    description='this bot is made by DerpysTown#1416')
 
 bot2 = commands.Bot(command_prefix='!', description = 'Example')
-bot1.add_cog(Music(bot))
-bot2.add_cog(Music(bot))
+bot1.add_cog(Music(bot1))
+bot2.add_cog(Music(bot2))
 
 
 loop = asyncio.get_event_loop()
