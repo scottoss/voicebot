@@ -210,8 +210,8 @@ class Music(commands.Cog):
 activity1 = discord.Activity(type=discord.ActivityType.listening, name="rd help")
 activity2 = discord.Activity(type=discord.ActivityType.listening, name="!help")
 
-bot1 = commands.Bot(command_prefix='rd ', description='this bot is made by DerpysTown#1416', activity=activity1, status=discord.Status.idle)
-bot2 = commands.Bot(command_prefix='!', description = 'this bot is made by DerpysTown#1416', activity=activity2, status=discord.Status.idle)
+bot1 = commands.Bot(command_prefix='rd ', description='this bot is made by DerpysTown#1416', activity=activity1, status=discord.Status.online)
+bot2 = commands.Bot(command_prefix='!', description = 'this bot is made by DerpysTown#1416', activity=activity2, status=discord.Status.online)
 
 
 bot1.add_cog(Music(bot1))
