@@ -208,17 +208,38 @@ class Music(commands.Cog):
             
   
 activity1 = discord.Activity(type=discord.ActivityType.listening, name="rd help")
-activity2 = discord.Activity(type=discord.ActivityType.listening, name="!help")
+activity2 = discord.Activity(type=discord.ActivityType.listening, name="r! help")
+activity3 = discord.Activity(type=discord.ActivityType.listening, name="pp help")
+activity4 = discord.Activity(type=discord.ActivityType.listening, name="aj help")
+activity5 = discord.Activity(type=discord.ActivityType.listening, name="fs help")
+activity6 = discord.Activity(type=discord.ActivityType.listening, name="t! help")
 
-bot1 = commands.Bot(command_prefix='rd ', description='this bot is made by DerpysTown#1416', activity=activity1, status=discord.Status.online)
-bot2 = commands.Bot(command_prefix='!', description = 'this bot is made by DerpysTown#1416', activity=activity2, status=discord.Status.online)
+
+
+
+
+bot1 = commands.Bot(command_prefix='rd ', description='i am 20% cooler', activity=activity1, status=discord.Status.online)
+bot2 = commands.Bot(command_prefix='r! ', description = 'i am making dresses darling', activity=activity2, status=discord.Status.online)
+bot3 = commands.Bot(command_prefix='pp ', description = 'i am planning a party just for you', activity=activity2, status=discord.Status.online)
+bot4 = commands.Bot(command_prefix='aj ', description = 'yeehah', activity=activity2, status=discord.Status.online)
+bot5 = commands.Bot(command_prefix='fs ', description = 'hi there', activity=activity2, status=discord.Status.online)
+bot6 = commands.Bot(command_prefix='t! ', description = 'i am reading a book', activity=activity2, status=discord.Status.online)
 
 
 bot1.add_cog(Music(bot1))
 bot2.add_cog(Music(bot2))
+bot3.add_cog(Music(bot3))
+bot4.add_cog(Music(bot4))
+bot5.add_cog(Music(bot5))
+bot6.add_cog(Music(bot6))
+
 
 
 loop = asyncio.get_event_loop()
 loop.create_task(bot1.start(os.environ['TOKEN']))
 loop.create_task(bot2.start(os.environ['TOKEN2']))
+loop.create_task(bot3.start(os.environ['TOKEN3']))
+loop.create_task(bot4.start(os.environ['TOKEN4']))
+loop.create_task(bot5.start(os.environ['TOKEN5']))
+loop.create_task(bot6.start(os.environ['TOKEN6']))
 loop.run_forever()
