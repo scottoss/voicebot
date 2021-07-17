@@ -220,10 +220,10 @@ activity6 = discord.Activity(type=discord.ActivityType.listening, name="t! help"
 
 bot1 = commands.Bot(command_prefix='rd ', description='i am 20% cooler', activity=activity1, status=discord.Status.online)
 bot2 = commands.Bot(command_prefix='r! ', description = 'i am making dresses darling', activity=activity2, status=discord.Status.online)
-bot3 = commands.Bot(command_prefix='pp ', description = 'i am planning a party just for you', activity=activity2, status=discord.Status.online)
-bot4 = commands.Bot(command_prefix='aj ', description = 'yeehah', activity=activity2, status=discord.Status.online)
-bot5 = commands.Bot(command_prefix='fs ', description = 'hi there', activity=activity2, status=discord.Status.online)
-bot6 = commands.Bot(command_prefix='t! ', description = 'i am reading a book', activity=activity2, status=discord.Status.online)
+bot3 = commands.Bot(command_prefix='pp ', description = 'i am planning a party just for you', activity=activity3, status=discord.Status.online)
+bot4 = commands.Bot(command_prefix='aj ', description = 'yeehah', activity=activity4, status=discord.Status.online)
+bot5 = commands.Bot(command_prefix='fs ', description = 'hi there', activity=activity5, status=discord.Status.online)
+bot6 = commands.Bot(command_prefix='t! ', description = 'i am reading a book', activity=activity6, status=discord.Status.online)
 
 
 bot1.add_cog(Music(bot1))
