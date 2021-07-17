@@ -211,7 +211,7 @@ bot1 = commands.Bot(command_prefix=commands.when_mentioned_or(os.environ['PREFIX
 bot2 = commands.Bot(command_prefix='!', description = 'Example')
 
 
-loop = asyncio.get_event_loop()
-loop.create_task(bot1.start(os.environ['TOKEN1']))
-loop.create_task(bot2.start(os.environ['TOKEN2']))
-loop.run_forever()
+async def create_bots():
+    await bot1.start("NzAyNDQ0MTQxNjkwNDg2ODA1.XqAIFg.-9MDNH0IkZU7_9HTGfl6tmHwL4s")
+    await bot2.start("NzM1NTEzOTY1Njc2ODU1NDEw.XxhWwg.kxbZy_Jz-5FOw05suUlS7T7fgM4")
+loop.run_until_complete(create_bots())
