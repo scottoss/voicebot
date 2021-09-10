@@ -138,11 +138,6 @@ class Music(commands.Cog):
         
     @radio.before_invoke
     @tts.before_invoke
-    @darkpony.before_invoke
-    @sfx1.before_invoke
-    @sfx2.before_invoke
-    @sfx3.before_invoke
-    @sfx4.before_invoke
     @yt.before_invoke
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
