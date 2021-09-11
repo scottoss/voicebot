@@ -65,7 +65,7 @@ class Music(commands.Cog):
    
         
     @commands.command()
-    async def yt(self, ctx, *, url):
+    async def play(self, ctx, *, url):
         """Plays from a url (almost anything youtube_dl supports)"""
 
         async with ctx.typing():
@@ -77,6 +77,17 @@ class Music(commands.Cog):
         
 
     @commands.command()
+    async def compufm(self, ctx):
+        """Plays CompuFm"""
+
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio("http://yayponies.no:8000/listen.ogg"))
+        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+
+        await ctx.send("now playing: CompuFm")
+        await ctx.send("The Greatest Music on the Internet!")
+        
+        
+    @commands.command()
     async def radio(self, ctx):
         """Plays the radio station"""
 
@@ -84,7 +95,7 @@ class Music(commands.Cog):
         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
 
         await ctx.send(os.environ['RADIO_NAME'])
-
+        
 
 
 
@@ -137,8 +148,9 @@ class Music(commands.Cog):
         
         
     @radio.before_invoke
+    @compufm.before_invoke
     @tts.before_invoke
-    @yt.before_invoke
+    @play.before_invoke
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
             if ctx.author.voice:
