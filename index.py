@@ -173,7 +173,7 @@ bot3 = commands.Bot(command_prefix='pp ', description = 'i am planning a party j
 bot4 = commands.Bot(command_prefix='aj ', description = 'yeehah', activity=activity4, status=discord.Status.online)
 bot5 = commands.Bot(command_prefix='fs ', description = 'hi there', activity=activity5, status=discord.Status.online)
 bot6 = commands.Bot(command_prefix='t! ', description = 'i am reading a book', activity=activity6, status=discord.Status.online)
-bot7 = commands.Bot(command_prefix='dh  ', description = 'derp', activity=activity7, status=discord.Status.online)
+bot7 = commands.Bot(command_prefix='dh ', description = 'derp', activity=activity7, status=discord.Status.online)
 
 
 bot1.add_cog(Music(bot1))
