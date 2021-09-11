@@ -162,7 +162,7 @@ activity3 = discord.Activity(type=discord.ActivityType.listening, name="pp help"
 activity4 = discord.Activity(type=discord.ActivityType.listening, name="aj help")
 activity5 = discord.Activity(type=discord.ActivityType.listening, name="fs help")
 activity6 = discord.Activity(type=discord.ActivityType.listening, name="t! help")
-
+activity7 = discord.Activity(type=discord.ActivityType.listening, name="dh help")
 
 
 
@@ -173,6 +173,7 @@ bot3 = commands.Bot(command_prefix='pp ', description = 'i am planning a party j
 bot4 = commands.Bot(command_prefix='aj ', description = 'yeehah', activity=activity4, status=discord.Status.online)
 bot5 = commands.Bot(command_prefix='fs ', description = 'hi there', activity=activity5, status=discord.Status.online)
 bot6 = commands.Bot(command_prefix='t! ', description = 'i am reading a book', activity=activity6, status=discord.Status.online)
+bot7 = commands.Bot(command_prefix='dh  ', description = 'derp', activity=activity7, status=discord.Status.online)
 
 
 bot1.add_cog(Music(bot1))
@@ -181,7 +182,7 @@ bot3.add_cog(Music(bot3))
 bot4.add_cog(Music(bot4))
 bot5.add_cog(Music(bot5))
 bot6.add_cog(Music(bot6))
-
+bot7.add_cog(Music(bot7))
 
 
 loop = asyncio.get_event_loop()
@@ -191,4 +192,6 @@ loop.create_task(bot3.start(os.environ['TOKEN3']))
 loop.create_task(bot4.start(os.environ['TOKEN4']))
 loop.create_task(bot5.start(os.environ['TOKEN5']))
 loop.create_task(bot6.start(os.environ['TOKEN6']))
+loop.create_task(bot7.start(os.environ['TOKEN7']))
 loop.run_forever()
+
