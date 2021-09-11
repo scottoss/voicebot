@@ -87,14 +87,7 @@ class Music(commands.Cog):
         await ctx.send("**The Greatest Music on the Internet!**")
         
         
-    @commands.command()
-    async def radio(self, ctx):
-        """Plays the radio station"""
 
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(os.environ['RADIO_LINK']))
-        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
-
-        await ctx.send(os.environ['RADIO_NAME'])
         
 
 
@@ -147,7 +140,7 @@ class Music(commands.Cog):
         
         
         
-    @radio.before_invoke
+
     @compufm.before_invoke
     @tts.before_invoke
     @play.before_invoke
