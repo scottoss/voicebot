@@ -91,7 +91,7 @@ class Music(commands.Cog):
     async def radionl(self, ctx):
         """Plays CompuFm"""
 
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio("http://yayponies.no:8000/listen.ogg"))
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio("https://stream.radionl.fm/radionl"))
         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
 
         await ctx.send("now playing: **RadioNL**")
