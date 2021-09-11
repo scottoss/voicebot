@@ -83,8 +83,8 @@ class Music(commands.Cog):
         source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio("http://yayponies.no:8000/listen.ogg"))
         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
 
-        await ctx.send("now playing: CompuFm")
-        await ctx.send("The Greatest Music on the Internet!")
+        await ctx.send("now playing: **CompuFm"**)
+        await ctx.send("**The Greatest Music on the Internet!**")
         
         
     @commands.command()
