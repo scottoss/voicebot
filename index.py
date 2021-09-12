@@ -89,7 +89,7 @@ class Music(commands.Cog):
         
     @commands.command()
     async def radionl(self, ctx):
-        """Plays CompuFm"""
+        """Plays RadioNL"""
 
         source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio("https://stream.radionl.fm/radionl"))
         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
