@@ -65,7 +65,8 @@ class Music(commands.Cog):
    
         
     @commands.command()
-    async def play(self, ctx, *, url):
+    #async def play(self, ctx, *, url):
+    async def play(self, ctx):
         """Plays from a url (almost anything youtube_dl supports)"""
 
         #async with ctx.typing():
