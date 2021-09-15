@@ -65,16 +65,16 @@ class Music(commands.Cog):
    
         
     @commands.command()
-    #async def play(self, ctx, *, url):
-    async def play(self, ctx):
+    async def play(self, ctx, *, url):
+    #async def play(self, ctx):
         """Plays from a url (almost anything youtube_dl supports)"""
 
-        #async with ctx.typing():
-        #    player = await YTDLSource.from_url(url, loop=self.bot.loop)
-        #    ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
+        async with ctx.typing():
+            player = await YTDLSource.from_url(url, loop=self.bot.loop)
+            ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
 
-        #await ctx.send(f'Now playing: {player.title}')
-        await ctx.send(f'Sorry this music feature is temporary disabled')
+        await ctx.send(f'Now playing: {player.title}')
+        #await ctx.send(f'Sorry this music feature is temporary disabled')
         
 
     @commands.command()
